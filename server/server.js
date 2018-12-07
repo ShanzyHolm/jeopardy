@@ -12,9 +12,9 @@ app.use(parser.json());
 MongoClient.connect('mongodb://localhost:27017')
   .then((client) => {
     const db = client.db('jeopardy-db');
-    const jeopardyCollection = db.collection('jeopardy');
-    const jeopardyRouter = createRouter(jeopardyCollection);
-    app.use('/api/jeopardy', jeopardyRouter);
+    const questionsCollection = db.collection('questions');
+    const questionsRouter = createRouter(questionsCollection);
+    app.use('/api/questions', questionsRouter);
   })
   .catch(console.err);
 
